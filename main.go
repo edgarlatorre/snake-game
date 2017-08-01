@@ -12,9 +12,9 @@ import (
 )
 
 const (
-	WIDTH         = 400
-	HEIGHT        = 400
-	TILE          = 10
+	WIDTH         = 800
+	HEIGHT        = 800
+	TILE          = 20
 	WIDTH_IN_TILE = WIDTH / TILE
 )
 
