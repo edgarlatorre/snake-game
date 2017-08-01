@@ -8,8 +8,7 @@ import (
 )
 
 type scene struct {
-	bg    *sdl.Texture
-	snake *sdl.Texture
+	bg *sdl.Texture
 }
 
 func newScene(r *sdl.Renderer) (*scene, error) {
@@ -22,13 +21,19 @@ func newScene(r *sdl.Renderer) (*scene, error) {
 	return &scene{bg: bg}, nil
 }
 
-func (s *scene) draw(r *sdl.Renderer, snake *Snake) error {
+func (s *scene) draw(r *sdl.Renderer, snake *Snake, fruit *Fruit) error {
 	r.Clear()
 
 	err := r.Copy(s.bg, nil, nil)
 
 	if err != nil {
 		return fmt.Errorf("could not copy background: %v", err)
+	}
+
+	err = fruit.Draw(r)
+
+	if err != nil {
+		return fmt.Errorf("could not copy fruit: %v", err)
 	}
 
 	err = snake.Draw(r)

@@ -64,6 +64,7 @@ func run() error {
 	defer s.destroy()
 
 	snake := &Snake{x: 10, y: 10, velx: 0, vely: 0, tail: 3, pos: make([][]int32, 0)}
+	fruit := &Fruit{x: 10, y: 10}
 
 	running := true
 
@@ -93,7 +94,8 @@ func run() error {
 			snake.Update()
 		}
 
-		err = s.draw(r, snake)
+		err = s.draw(r, snake, fruit)
+
 		if err != nil {
 			return fmt.Errorf("Could not draw a scene %v", err)
 		}
