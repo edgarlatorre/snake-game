@@ -8,45 +8,45 @@ import (
 
 // Snake struct
 type Snake struct {
-	x, y, velx, vely int32
-	pos              [][]int32
-	tail             int
+	X, Y, Velx, Vely int32
+	Pos              [][]int32
+	Tail             int
 }
 
 // Update snake
 func (snake *Snake) Update() {
-	snake.x += snake.velx
-	snake.y += snake.vely
+	snake.X += snake.Velx
+	snake.Y += snake.Vely
 
-	if snake.x > WIDTH_IN_TILE {
-		snake.x = 0
+	if snake.X > WIDTH_IN_TILE {
+		snake.X = 0
 	}
 
-	if snake.x < 0 {
-		snake.x = WIDTH_IN_TILE
+	if snake.X < 0 {
+		snake.X = WIDTH_IN_TILE
 	}
 
-	if snake.y > WIDTH_IN_TILE {
-		snake.y = 0
+	if snake.Y > WIDTH_IN_TILE {
+		snake.Y = 0
 	}
 
-	if snake.y < 0 {
-		snake.y = WIDTH_IN_TILE
+	if snake.Y < 0 {
+		snake.Y = WIDTH_IN_TILE
 	}
 
-	snake.pos = append(snake.pos, []int32{snake.x, snake.y})
+	snake.Pos = append(snake.Pos, []int32{snake.X, snake.Y})
 
-	for len(snake.pos) > snake.tail {
-		fmt.Println("Slice", snake.pos[1:])
-		snake.pos = snake.pos[1:]
+	for len(snake.Pos) > snake.Tail {
+		fmt.Println("Slice", snake.Pos[1:])
+		snake.Pos = snake.Pos[1:]
 
 	}
 }
 
 // Draw snake
 func (snake *Snake) Draw(r *sdl.Renderer) error {
-	for _, pos := range snake.pos {
-		rect := &sdl.Rect{X: pos[0] * TILE, Y: pos[1] * TILE, H: TILE - 1, W: TILE - 1}
+	for _, Pos := range snake.Pos {
+		rect := &sdl.Rect{X: Pos[0] * TILE, Y: Pos[1] * TILE, H: TILE - 1, W: TILE - 1}
 
 		err := r.DrawRect(rect)
 

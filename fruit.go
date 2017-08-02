@@ -9,7 +9,7 @@ import (
 
 // Fruit struct
 type Fruit struct {
-	x, y int32
+	X, Y int32
 }
 
 // Draw fruit
@@ -20,7 +20,7 @@ func (fruit *Fruit) Draw(r *sdl.Renderer) error {
 		return fmt.Errorf("Could not load fruit: %v", err)
 	}
 
-	rect := &sdl.Rect{X: fruit.x * TILE, Y: fruit.y * TILE, H: TILE - 1, W: TILE - 1}
+	rect := &sdl.Rect{X: fruit.X * TILE, Y: fruit.Y * TILE, H: TILE - 1, W: TILE - 1}
 
 	err = r.Copy(fruitImage, nil, rect)
 

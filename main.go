@@ -63,8 +63,8 @@ func run() error {
 
 	defer s.destroy()
 
-	snake := &Snake{x: 10, y: 10, velx: 0, vely: 0, tail: 3, pos: make([][]int32, 0)}
-	fruit := &Fruit{x: 10, y: 10}
+	snake := &Snake{X: 10, Y: 10, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	fruit := &Fruit{X: 10, Y: 10}
 
 	running := true
 
@@ -76,19 +76,19 @@ func run() error {
 			running = false
 		case *sdl.KeyDownEvent:
 			if t.Keysym.Sym == sdl.K_UP {
-				snake.y--
+				snake.Y--
 			}
 
 			if t.Keysym.Sym == sdl.K_DOWN {
-				snake.y++
+				snake.Y++
 			}
 
 			if t.Keysym.Sym == sdl.K_LEFT {
-				snake.x--
+				snake.X--
 			}
 
 			if t.Keysym.Sym == sdl.K_RIGHT {
-				snake.x++
+				snake.X++
 			}
 
 			snake.Update()
