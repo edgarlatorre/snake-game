@@ -11,6 +11,7 @@ type Snake struct {
 	X, Y, Velx, Vely int32
 	Pos              [][]int32
 	Tail             int
+	action           string
 }
 
 // Update snake

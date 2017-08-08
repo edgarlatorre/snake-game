@@ -13,6 +13,7 @@ import (
 
 const (
 	WIDTH         = 800
+	SPEED         = 100
 	HEIGHT        = 800
 	TILE          = 20
 	WIDTH_IN_TILE = WIDTH / TILE
@@ -63,41 +64,56 @@ func run() error {
 
 	defer s.destroy()
 
-	snake := &Snake{X: 10, Y: 10, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10, Velx: 0, Vely: 0, Tail: 3, action: "right", Pos: make([][]int32, 0)}
 	fruit := &Fruit{X: 10, Y: 10}
 
 	running := true
 
-	for running {
-		event = sdl.WaitEvent()
+	for range time.Tick(100 * time.Millisecond) {
+		for event = sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
+			switch t := event.(type) {
+			case *sdl.QuitEvent:
+				running = false
+			case *sdl.KeyDownEvent:
+				if t.Keysym.Sym == sdl.K_UP {
+					snake.action = "up"
+				}
 
-		switch t := event.(type) {
-		case *sdl.QuitEvent:
-			running = false
-		case *sdl.KeyDownEvent:
-			if t.Keysym.Sym == sdl.K_UP {
-				snake.Y--
+				if t.Keysym.Sym == sdl.K_DOWN {
+					snake.action = "down"
+				}
+
+				if t.Keysym.Sym == sdl.K_LEFT {
+					snake.action = "left"
+				}
+
+				if t.Keysym.Sym == sdl.K_RIGHT {
+					snake.action = "right"
+				}
 			}
-
-			if t.Keysym.Sym == sdl.K_DOWN {
-				snake.Y++
-			}
-
-			if t.Keysym.Sym == sdl.K_LEFT {
-				snake.X--
-			}
-
-			if t.Keysym.Sym == sdl.K_RIGHT {
-				snake.X++
-			}
-
-			snake.Update()
 		}
+
+		switch snake.action {
+		case "up":
+			snake.Y--
+		case "down":
+			snake.Y++
+		case "left":
+			snake.X--
+		case "right":
+			snake.X++
+		}
+
+		snake.Update()
 
 		err = s.draw(r, snake, fruit)
 
 		if err != nil {
 			return fmt.Errorf("Could not draw a scene %v", err)
+		}
+
+		if !running {
+			break
 		}
 	}
 
