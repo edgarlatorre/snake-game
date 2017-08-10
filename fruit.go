@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 
 	"github.com/veandco/go-sdl2/img"
 	"github.com/veandco/go-sdl2/sdl"
@@ -29,4 +30,10 @@ func (fruit *Fruit) Draw(r *sdl.Renderer) error {
 	}
 
 	return nil
+}
+
+// Reset fruit position
+func (fruit *Fruit) Reset() {
+	fruit.X = int32(rand.Float32() * TILE)
+	fruit.Y = int32(rand.Float32() * TILE)
 }

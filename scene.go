@@ -30,6 +30,10 @@ func (s *scene) draw(r *sdl.Renderer, snake *Snake, fruit *Fruit) error {
 		return fmt.Errorf("could not copy background: %v", err)
 	}
 
+	if fruit.X == snake.X && fruit.Y == snake.Y {
+		fruit.Reset()
+	}
+
 	err = fruit.Draw(r)
 
 	if err != nil {
