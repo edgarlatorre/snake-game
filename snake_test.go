@@ -59,3 +59,39 @@ func TestUpdateResetY(t *testing.T) {
 		t.Errorf("Did not update Y = WIDTH_IN_TILE if less than 0")
 	}
 }
+
+func TestUp(t *testing.T) {
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake.Up()
+
+	if snake.action != "up" {
+		t.Errorf("Up did not set action to 'up'")
+	}
+}
+
+func TestDown(t *testing.T) {
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake.Down()
+
+	if snake.action != "down" {
+		t.Errorf("Up did not set action to 'down'")
+	}
+}
+
+func TestLeft(t *testing.T) {
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake.Left()
+
+	if snake.action != "left" {
+		t.Errorf("Up did not set action to 'left'")
+	}
+}
+
+func TestRight(t *testing.T) {
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake.Right()
+
+	if snake.action != "right" {
+		t.Errorf("Up did not set action to 'left'")
+	}
+}

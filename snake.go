@@ -14,6 +14,26 @@ type Snake struct {
 	action           string
 }
 
+// Up set action
+func (snake *Snake) Up() {
+	snake.action = "up"
+}
+
+// Down set action
+func (snake *Snake) Down() {
+	snake.action = "down"
+}
+
+// Left set action
+func (snake *Snake) Left() {
+	snake.action = "left"
+}
+
+// Right set action
+func (snake *Snake) Right() {
+	snake.action = "right"
+}
+
 // Update snake
 func (snake *Snake) Update() {
 	snake.X += snake.Velx

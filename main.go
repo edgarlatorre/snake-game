@@ -76,19 +76,19 @@ func run() error {
 				running = false
 			case *sdl.KeyDownEvent:
 				if t.Keysym.Sym == sdl.K_UP {
-					snake.action = "up"
+					snake.Up()
 				}
 
 				if t.Keysym.Sym == sdl.K_DOWN {
-					snake.action = "down"
+					snake.Down()
 				}
 
 				if t.Keysym.Sym == sdl.K_LEFT {
-					snake.action = "left"
+					snake.Left()
 				}
 
 				if t.Keysym.Sym == sdl.K_RIGHT {
-					snake.action = "right"
+					snake.Right()
 				}
 			}
 		}
