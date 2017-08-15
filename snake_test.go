@@ -5,7 +5,7 @@ import (
 )
 
 func TestUpdateAppendPos(t *testing.T) {
-	snake := &Snake{X: 10, Y: 10, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10, Tail: 3, Pos: make([][]int32, 0)}
 
 	snake.Update()
 
@@ -29,7 +29,7 @@ func TestUpdateAppendPos(t *testing.T) {
 }
 
 func TestUpdateResetX(t *testing.T) {
-	snake := &Snake{X: 10 + WIDTH_IN_TILE, Y: 10, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10 + WIDTH_IN_TILE, Y: 10, Tail: 3, Pos: make([][]int32, 0)}
 	snake.Update()
 
 	if snake.X != 0 {
@@ -45,7 +45,7 @@ func TestUpdateResetX(t *testing.T) {
 }
 
 func TestUpdateResetY(t *testing.T) {
-	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Tail: 3, Pos: make([][]int32, 0)}
 	snake.Update()
 
 	if snake.Y != 0 {
@@ -61,7 +61,7 @@ func TestUpdateResetY(t *testing.T) {
 }
 
 func TestUp(t *testing.T) {
-	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Tail: 3, Pos: make([][]int32, 0)}
 	snake.Up()
 
 	if snake.action != "up" {
@@ -70,7 +70,7 @@ func TestUp(t *testing.T) {
 }
 
 func TestDown(t *testing.T) {
-	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Tail: 3, Pos: make([][]int32, 0)}
 	snake.Down()
 
 	if snake.action != "down" {
@@ -79,7 +79,7 @@ func TestDown(t *testing.T) {
 }
 
 func TestLeft(t *testing.T) {
-	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Tail: 3, Pos: make([][]int32, 0)}
 	snake.Left()
 
 	if snake.action != "left" {
@@ -88,7 +88,7 @@ func TestLeft(t *testing.T) {
 }
 
 func TestRight(t *testing.T) {
-	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Velx: 0, Vely: 0, Tail: 3, Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10 + WIDTH_IN_TILE, Tail: 3, Pos: make([][]int32, 0)}
 	snake.Right()
 
 	if snake.action != "right" {

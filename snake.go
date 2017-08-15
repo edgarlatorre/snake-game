@@ -8,10 +8,10 @@ import (
 
 // Snake struct
 type Snake struct {
-	X, Y, Velx, Vely int32
-	Pos              [][]int32
-	Tail             int
-	action           string
+	X, Y   int32
+	Pos    [][]int32
+	Tail   int
+	action string
 }
 
 // Up set action
@@ -36,9 +36,6 @@ func (snake *Snake) Right() {
 
 // Update snake
 func (snake *Snake) Update() {
-	snake.X += snake.Velx
-	snake.Y += snake.Vely
-
 	if snake.X > WIDTH_IN_TILE {
 		snake.X = 0
 	}
@@ -89,4 +86,9 @@ func (snake *Snake) Draw(r *sdl.Renderer) error {
 	}
 
 	return nil
+}
+
+// Reset snake state
+func (snake *Snake) Reset() {
+	snake.Tail = 3
 }

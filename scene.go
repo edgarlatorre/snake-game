@@ -32,6 +32,13 @@ func (s *scene) draw(r *sdl.Renderer, snake *Snake, fruit *Fruit) error {
 
 	if fruit.X == snake.X && fruit.Y == snake.Y {
 		fruit.Reset()
+		snake.Tail++
+	}
+
+	for i := 0; i < len(snake.Pos)-2; i++ {
+		if snake.Pos[i][0] == snake.X && snake.Pos[i][1] == snake.Y {
+			snake.Reset()
+		}
 	}
 
 	err = fruit.Draw(r)

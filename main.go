@@ -64,7 +64,7 @@ func run() error {
 
 	defer s.destroy()
 
-	snake := &Snake{X: 10, Y: 10, Velx: 0, Vely: 0, Tail: 3, action: "right", Pos: make([][]int32, 0)}
+	snake := &Snake{X: 10, Y: 10, Tail: 3, action: "right", Pos: make([][]int32, 0)}
 	fruit := &Fruit{X: 10, Y: 10}
 
 	running := true
